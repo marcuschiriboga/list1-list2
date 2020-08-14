@@ -5,7 +5,11 @@ Kenzie assignment: List1
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Marcus Chiriboga"
+
+
+# help from https://developers.google.com/edu/python/sorting
+
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -26,8 +30,13 @@ __author__ = "???"
 
 
 def match_ends(words):
-    # your code here
-    return
+    answer = 0
+    for w in words:
+        if len(w) > 1:
+            if w[0] == w[-1]:
+                answer += 1
+        continue
+    return answer
 
 
 # B. front_x
@@ -43,8 +52,16 @@ def match_ends(words):
 
 def front_x(words):
     # your code here
-    return
-
+    x_sorted_list = []
+    rest_list = []
+    words.sort()
+    for w in words:
+        if w[0] == "x":
+            x_sorted_list.append(w)
+        else:
+            rest_list.append(w)
+    answer = x_sorted_list + rest_list
+    return answer
 
 # C. sort_last
 # Given a list of non-empty tuples, return a list sorted in
@@ -56,12 +73,17 @@ def front_x(words):
 
 
 def sort_last(tuples):
-    # your code here
-    return
 
+    def MyFn(s):
+        return s[-1]
+
+    tuples.sort(key=MyFn)
+    return tuples
 
 # Provided simple test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
+
+
 def test(got, expected):
     if got == expected:
         prefix = ' OK '
